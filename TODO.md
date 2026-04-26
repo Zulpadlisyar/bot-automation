@@ -1,29 +1,17 @@
-# TODO: Professional GitHub Repository Setup
+# TODO: Optimasi CI Workflow
 
-- [x] Create TODO.md
-- [x] Create directory structure (src/, src/services/, src/utils/, .github/workflows/)
-- [x] Create LICENSE (MIT)
-- [x] Create CODE_OF_CONDUCT.md
-- [x] Create CONTRIBUTING.md
-- [x] Create pyproject.toml
-- [x] Create Makefile
-- [x] Create .env.example
-- [x] Create CHANGELOG.md
-- [x] Create .github/workflows/ci.yml
-- [x] Create src/config.py
-- [x] Create src/services/scraper.py
-- [x] Create src/services/extractor.py
-- [x] Create src/utils/platform.py
-- [x] Create src/reset_webhook.py
-- [x] Refactor src/bot.py
-- [x] Update requirements.txt
-- [x] Update .gitignore
-- [x] Create README.md
-- [x] Remove old files (bot.py, reset_boy.py, README)
-- [x] Create __init__.py files
-- [x] Final review & completion
+## Langkah-langkah
+- [x] 1. Analisis workflow CI saat ini
+- [x] 2. Optimasi `.github/workflows/ci.yml`:
+  - [x] Tambahkan `workflow_dispatch` untuk manual trigger
+  - [x] Tambahkan `paths` filter agar CI hanya berjalan saat file relevan berubah
+  - [x] Tambahkan `concurrency` untuk membatalkan run redundant
+  - [x] Gunakan `cache: pip` bawaan `actions/setup-python` untuk simplifikasi
+  - [x] Gabungkan install dependencies untuk mengurangi step count
+  - [x] Tambahkan `if: !contains(github.event.head_commit.message, '[ci skip]')` untuk skip commit tertentu
+- [x] 3. Verifikasi hasil edit
 
-## ✅ Semua tugas selesai!
+## Hasil
+Workflow CI telah dioptimasi untuk mengurangi penggunaan GitHub Actions minutes.
 
-Repository sudah siap di-upload ke GitHub dengan tampilan profesional.
 
