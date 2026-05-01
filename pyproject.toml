@@ -10,7 +10,7 @@ readme = "README.md"
 license = {text = "MIT"}
 requires-python = ">=3.10"
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "Zulpadli Syar", email = "zulpadli@example.com"}
 ]
 keywords = ["telegram", "bot", "magang", "internship", "tracker", "scraper"]
 classifiers = [
@@ -42,10 +42,17 @@ dev = [
     "mypy>=1.10",
 ]
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
 [project.urls]
-Homepage = "https://github.com/username/magang-tracker-bot"
-Repository = "https://github.com/username/magang-tracker-bot"
-Issues = "https://github.com/username/magang-tracker-bot/issues"
+Homepage = "https://github.com/zulpadlisyar/magang-tracker-bot"
+Repository = "https://github.com/zulpadlisyar/magang-tracker-bot"
+Issues = "https://github.com/zulpadlisyar/magang-tracker-bot/issues"
+Documentation = "https://github.com/zulpadlisyar/magang-tracker-bot/blob/main/README.md"
 
 [tool.black]
 line-length = 88

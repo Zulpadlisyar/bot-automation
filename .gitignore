@@ -90,7 +90,23 @@ Thumbs.db
 # Temporary & Debug Files
 # ============================================
 reset_bot.py
-test_*.py
 cek_*.py
 *.log
+
+# ============================================
+# Demo & Test Files (local only)
+# ============================================
+*_demo.py
+company_extraction_demo.py
+extraction_flow_demo.py
+
+# ============================================
+# Additional Security
+# ============================================
+*.pem
+*.key
+*.crt
+secrets/
+*.secret
+config/secrets.py
 

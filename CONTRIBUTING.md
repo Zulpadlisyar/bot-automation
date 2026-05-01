@@ -8,7 +8,7 @@ Terima kasih atas minat Anda untuk berkontribusi! 🎉
 
 ```bash
 # Fork repository di GitHub, lalu clone
-gh repo fork username/magang-tracker-bot --clone=true
+gh repo fork zulpadlisyar/magang-tracker-bot --clone=true
 cd magang-tracker-bot
 ```
 
@@ -66,7 +66,7 @@ Buka Pull Request di GitHub dengan deskripsi yang jelas:
 
 ## Melaporkan Bug
 
-Gunakan [GitHub Issues](https://github.com/username/magang-tracker-bot/issues) dengan template:
+Gunakan [GitHub Issues](https://github.com/zulpadlisyar/magang-tracker-bot/issues) dengan template:
 
 - **Deskripsi**: Apa masalahnya?
 - **Reproduksi**: Langkah-langkah untuk memunculkan bug
@@ -76,5 +76,5 @@ Gunakan [GitHub Issues](https://github.com/username/magang-tracker-bot/issues) d
 
 ## Pertanyaan?
 
-Silakan buat [Discussion](https://github.com/username/magang-tracker-bot/discussions) atau hubungi maintainer.
+Silakan buat [Discussion](https://github.com/zulpadlisyar/magang-tracker-bot/discussions) atau hubungi maintainer.
 

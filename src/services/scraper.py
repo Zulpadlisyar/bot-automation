@@ -29,4 +29,3 @@ def scrape_metadata(url: str) -> dict[str, str]:
         }
     except Exception as e:
         return {"title": "", "description": f"Error: {e}"}
-

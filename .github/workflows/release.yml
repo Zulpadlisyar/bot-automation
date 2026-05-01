@@ -1,0 +1,83 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-publish:
+    name: Build and Publish
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build twine
+
+      - name: Build package
+        run: python -m build
+
+      - name: Check package
+        run: twine check dist/*
+
+      - name: Generate Release Notes
+        id: release_notes
+        run: |
+          # Get previous tag
+          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          
+          if [ -z "$PREV_TAG" ]; then
+            # First release
+            echo "notes<<EOF" >> $GITHUB_OUTPUT
+            echo "## 🎉 First Release!" >> $GITHUB_OUTPUT
+            echo "" >> $GITHUB_OUTPUT
+            echo "Initial release of Magang Tracker Bot with:" >> $GITHUB_OUTPUT
+            echo "- ✅ Multi-platform support (Instagram, TikTok, X, Threads)" >> $GITHUB_OUTPUT
+            echo "- 🧠 AI-powered data extraction with DeepSeek" >> $GITHUB_OUTPUT
+            echo "- 📊 Automatic Excel spreadsheet integration" >> $GITHUB_OUTPUT
+            echo "- 🐳 Docker support" >> $GITHUB_OUTPUT
+            echo "- 🧪 Comprehensive test suite" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          else
+            # Get commits between tags
+            echo "notes<<EOF" >> $GITHUB_OUTPUT
+            echo "## 🚀 What's Changed" >> $GITHUB_OUTPUT
+            echo "" >> $GITHUB_OUTPUT
+            git log --pretty=format:"- %s (%h)" $PREV_TAG..HEAD >> $GITHUB_OUTPUT
+            echo "" >> $GITHUB_OUTPUT
+            echo "## 📦 Installation" >> $GITHUB_OUTPUT
+            echo "" >> $GITHUB_OUTPUT
+            echo '```bash' >> $GITHUB_OUTPUT
+            echo "pip install magang-tracker-bot==${{ github.ref_name }}" >> $GITHUB_OUTPUT
+            echo '```' >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: ${{ steps.release_notes.outputs.notes }}
+          draft: false
+          prerelease: false
+
+      - name: Publish to PyPI (if tagged)
+        if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: twine upload dist/*

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  magang-tracker-bot:
+    build: .
+    container_name: magang-tracker-bot
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
+    volumes:
+      - ./Tracker_Pendaftaran_Magang.xlsx:/app/Tracker_Pendaftaran_Magang.xlsx
+      - ./logs:/app/logs
+    networks:
+      - bot-network
+
+networks:
+  bot-network:
+    driver: bridge

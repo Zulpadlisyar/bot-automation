@@ -20,4 +20,3 @@ def get_platform_from_url(url: str) -> str:
     if "threads.net" in url_lower:
         return "Threads"
     return "Unknown"
-

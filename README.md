@@ -2,7 +2,7 @@
 
 # 🤖 Magang Tracker Bot
 
-[![CI](https://github.com/username/magang-tracker-bot/actions/workflows/ci.yml/badge.svg)](https://github.com/username/magang-tracker-bot/actions/workflows/ci.yml)
+[![CI](https://github.com/zulpadlisyar/magang-tracker-bot/actions/workflows/ci.yml/badge.svg)](https://github.com/zulpadlisyar/magang-tracker-bot/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -70,7 +70,7 @@ Data otomatis masuk ke file Excel dengan kolom lengkap:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/username/magang-tracker-bot.git
+git clone https://github.com/zulpadlisyar/magang-tracker-bot.git
 cd magang-tracker-bot
 
 # 2. Buat virtual environment
